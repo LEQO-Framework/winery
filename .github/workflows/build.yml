@@ -105,6 +105,16 @@ jobs:
       - name: Build with Maven
         run: mvn -Pfrontend -B package
 
+      - name: Print npm error logs if exist  # <-- INSERTED HERE
+        if: always()
+        run: |
+          if ls /home/runner/.npm/_logs/*.log 2>/dev/null; then
+            echo "npm logs found, showing them:"
+            cat /home/runner/.npm/_logs/*.log
+          else
+            echo "No npm error logs."
+          fi
+
       - name: Upload binary to artifacts
         uses: actions/upload-artifact@v4
         if: ${{ needs.pre_job.outputs.docker_run_required == 'true' }}
