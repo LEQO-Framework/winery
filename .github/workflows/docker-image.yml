@@ -1,5 +1,5 @@
  
-name: Publish Docker Image on push 
+name: Publish Docker Image to packages on push
 
 on:
   push:
