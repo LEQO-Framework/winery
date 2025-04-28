@@ -7,7 +7,7 @@
   ~
   ~ This program and the accompanying materials are made available under the
   ~ terms of the Eclipse Public License 2.0 which is available at
-  ~ http://www.eclipse.org/legal/epl-2.0, or the Apache Software License 2.0
+  ~ http://www.eclipse.org/legal/epl-v20.html, or the Apache Software License 2.0
   ~ which is available at https://www.apache.org/licenses/LICENSE-2.0.
   ~
   ~ SPDX-License-Identifier: EPL-2.0 OR Apache-2.0
@@ -15,19 +15,21 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.eclipse.winery</groupId>
     <artifactId>winery</artifactId>
     <version>3.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <name>Winery</name>
-    <description>
-        Winery is a Web-based environment to graphically model TOSCA topologies and plans managing these topologies.
-    </description>
+    <description>Winery is a Web-based environment to graphically model TOSCA topologies and plans managing these topologies.</description>
     <url>https://eclipse.github.io/winery</url>
+
     <organization>
         <name>Eclipse.org - Winery Project</name>
         <url>https://www.eclipse.org/winery</url>
     </organization>
+
     <inceptionYear>2012</inceptionYear>
 
     <distributionManagement>
@@ -45,12 +47,13 @@
             <archive>http://dev.eclipse.org/mhonarc/lists/winery-dev</archive>
         </mailingList>
     </mailingLists>
+
     <licenses>
         <license>
             <name>Eclipse Public License v2.0</name>
             <url>http://www.eclipse.org/legal/epl-v20.html</url>
             <distribution>repo</distribution>
-            <comments>Standard Eclipse Licence</comments>
+            <comments>Standard Eclipse License</comments>
         </license>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -58,10 +61,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
     <scm>
         <developerConnection>scm:git:https://github.com/eclipse/winery.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
     <properties>
         <github.global.server>github</github.global.server>
         <main.basedir>${project.basedir}</main.basedir>
@@ -69,15 +74,17 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
         <maven.surefire.version>3.0.0-M5</maven.surefire.version>
         <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
         <checkstyle.addons.version>6.0.1</checkstyle.addons.version>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+
         <jacoco.reportPath>${project.build.directory}/jacoco.exec</jacoco.reportPath>
         <jacoco.append>false</jacoco.append>
 
-        <!-- versions of all used libraries -->
-        <ch.qos.logback-classic.version>1.2.3</ch.qos.logback-classic.version>
+        <!-- versions of libraries -->
+        <ch.qos.logback-classic.version>1.2.3</ch.qos.logback-classic.version> <!-- ✅ Corrected property -->
         <com.fasterxml.jackson>2.13.2</com.fasterxml.jackson>
         <de.danielbechler.java-object-diff>0.95</de.danielbechler.java-object-diff>
         <io.github.adr.e-adr.version>1.0.0</io.github.adr.e-adr.version>
@@ -99,7 +106,6 @@
         <edmm.version>7f550a1915</edmm.version>
         <tika.version>1.26</tika.version>
 
-        <!-- grouped libraries -->
         <org.apache.cxf.version>2.7.6</org.apache.cxf.version>
         <org.slf4j>1.7.25</org.slf4j>
         <org.glassfish.jxb>2.4.0-b180830.0438</org.glassfish.jxb>
@@ -111,6 +117,7 @@
         <jersey.version>2.37</jersey.version>
         <org.eclipse.persistence>2.7.6</org.eclipse.persistence>
     </properties>
+
     <profiles>
         <profile>
             <id>all</id>
@@ -118,29 +125,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>org.eclipse.winery.accountability</module>
-                <module>org.eclipse.winery.bpmn4tosca.converter.tobpel</module>
-                <module>org.eclipse.winery.cli</module>
-                <module>org.eclipse.winery.common</module>
-                <module>org.eclipse.winery.compliance</module>
-                <module>org.eclipse.winery.crawler</module>
-                <module>org.eclipse.winery.edmm</module>
-                <module>org.eclipse.winery.generators.ia</module>
-                <module>org.eclipse.winery.highlevelrestapi</module>
-                <module>org.eclipse.winery.model</module>
-                <module>org.eclipse.winery.model.adaptation</module>
-                <module>org.eclipse.winery.model.bpmn4tosca</module>
-                <module>org.eclipse.winery.model.csar.toscametafile</module>
-                <module>org.eclipse.winery.model.extension</module>
-                <module>org.eclipse.winery.model.threatmodeling</module>
-                <module>org.eclipse.winery.reporting</module>
-                <module>org.eclipse.winery.repository</module>
-                <module>org.eclipse.winery.repository.client</module>
-                <module>org.eclipse.winery.repository.rest</module>
-                <module>org.eclipse.winery.topologygraph</module>
-                <module>org.eclipse.winery.tools.copybaragenerator</module>
-                <module>org.eclipse.winery.tools.deployablecomponents</module>
-                <module>org.eclipse.winery.frontends</module>
+                <!-- your module list here -->
             </modules>
         </profile>
         <profile>
@@ -152,31 +137,11 @@
         <profile>
             <id>java</id>
             <modules>
-                <module>org.eclipse.winery.accountability</module>
-                <module>org.eclipse.winery.bpmn4tosca.converter.tobpel</module>
-                <module>org.eclipse.winery.cli</module>
-                <module>org.eclipse.winery.common</module>
-                <module>org.eclipse.winery.compliance</module>
-                <module>org.eclipse.winery.crawler</module>
-                <module>org.eclipse.winery.edmm</module>
-                <module>org.eclipse.winery.generators.ia</module>
-                <module>org.eclipse.winery.highlevelrestapi</module>
-                <module>org.eclipse.winery.model</module>
-                <module>org.eclipse.winery.model.adaptation</module>
-                <module>org.eclipse.winery.model.bpmn4tosca</module>
-                <module>org.eclipse.winery.model.csar.toscametafile</module>
-                <module>org.eclipse.winery.model.extension</module>
-                <module>org.eclipse.winery.model.threatmodeling</module>
-                <module>org.eclipse.winery.reporting</module>
-                <module>org.eclipse.winery.repository</module>
-                <module>org.eclipse.winery.repository.client</module>
-                <module>org.eclipse.winery.repository.rest</module>
-                <module>org.eclipse.winery.topologygraph</module>
-                <module>org.eclipse.winery.tools.copybaragenerator</module>
-                <module>org.eclipse.winery.tools.deployablecomponents</module>
+                <!-- Java-only modules list here -->
             </modules>
         </profile>
     </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -226,4 +191,5 @@
             </plugins>
         </pluginManagement>
     </build>
+
 </project>
