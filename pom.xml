@@ -77,7 +77,7 @@
         <jacoco.append>false</jacoco.append>
 
         <!-- versions of all used libraries -->
-        <ch.qos.logback.logback-classic.version>1.2.3</ch.qos.logback-classic.version>
+        <ch.qos.logback-classic.version>1.2.3</ch.qos.logback-classic.version>
         <com.fasterxml.jackson>2.13.2</com.fasterxml.jackson>
         <de.danielbechler.java-object-diff>0.95</de.danielbechler.java-object-diff>
         <io.github.adr.e-adr.version>1.0.0</io.github.adr.e-adr.version>
