@@ -11,7 +11,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: LEQO-Framework/winery
 
 jobs:
 
@@ -20,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
-      docker_run_required: ${{ (github.repository_owner == 'OpenTOSCA' && (github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags'))) }}
+      docker_run_required: ${{ (github.repository_owner == 'LEQO-Framework' && (github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags'))) }}
     steps:
       - id: skip_check
         uses: fkirc/skip-duplicate-actions@master
-  
+
   java17:
     needs: pre_job
     if: |
@@ -60,12 +60,6 @@ jobs:
           path: |
             **/winery.war
             **/winery-cli.jar
-      - name: Run codacy-coverage-reporter
-        if: ${{ github.repository_owner == 'OpenTOSCA' }}
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: org.eclipse.winery.reporting/target/site/jacoco-aggregate/jacoco.xml
 
   frontend:
     needs: pre_job
@@ -121,7 +115,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      - name: Extract metadata (tags, labels) for Docker
+      - name: Extract metadata (tags, labels) for Docker CLI
         id: meta-cli
         uses: docker/metadata-action@v4
         with:
